@@ -1,45 +1,58 @@
-### Update 03/08/2016
-I'm working on making leonids a [jekyll theme](https://jekyllrb.com/docs/themes/) so that people can easily install the theme without having to fork or download anything from here. Actually the first gem version is published, you can install it by following the official [doc](https://jekyllrb.com/docs/themes/). You can find the rubygem version [here](https://rubygems.org/gems/leonids). But it will be on beta until I can finish the doc of how you can install leonids with the rubygem version.
+# Strata Reloaded
 
-### Update 05/06/2016
+Simple, clean personal blogging template for Jekyll based on Strata by HTML5 UP.
 
-Important! It's better to download the gzipped files instead of forking the repo. I would really appreciate if you could give me a star. 😁
+![Strata Reloaded template screenshot](images/_screenshot.png)
 
-This project is under MIT license, so feel free to make it your own.
+## Features
 
-# Leonids Jekyll Themes
+* Parallax background effect
+* Lightbox gallery
+* Pre-styled components
+* Blog with pagination
+* Configurable footer
+* Optimized for editing in [CloudCannon](http://cloudcannon.com/)
+* RSS/Atom feed
+* SEO tags
+* Google Analytics
+* Webmaster Verification
 
-**[Leonids](http://renyuanz.github.io/leonids)** is a clean Jekyll theme perfect for powering your GitHub hosted blog.
+## Develop
 
-## What is Leonids?
+1. Add your site and author details in `_config.yml`.
+2. Add your Google Analytics key to `_config.yml`.
+3. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Simple and clear permalink structure.
-* Support for Disqus Comments.
-* Support for multi-authors.
-* **And** the Leonids (/ˈliːənɪdz/ lee-ə-nidz) are a prolific meteor shower associated with the comet [Tempel-Tuttle](https://en.wikipedia.org/wiki/55P/Tempel%E2%80%93Tuttle).
+## Develop
 
-See a [demo](http://renyuanz.github.io/leonids/) hosted on GitHub.
+Urban was built with [Jekyll](http://jekyllrb.com/) version 3.3.1, but should support newer versions as well.
 
-## Quick setup
+Install the dependencies with [Bundler](http://bundler.io/):
 
-```
-git clone https://github.com/renyuanz/leonids
-cd leonids
-jekyll server
-```
+~~~bash
+$ bundle install
+~~~
 
-Check out your awesome blog at `http://localhost:4000` and Cheers!
+Run `jekyll` commands through Bundler to ensure you're using the right versions:
 
-## Running with Docker
+~~~bash
+$ bundle exec jekyll serve
+~~~
 
-```
-docker run --rm -it --volume=$PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --force_polling
-```
+## Editing
 
-## TODO
+Strata Reloaded is already optimized for adding, updating and removing posts and footer elements in [CloudCannon](https://app.cloudcannon.com/).
 
-- [ ] Build a timeline page.
-- [ ] Build a portfolio page.
-- [ ] Redesign categories page. Ref: [dribbble: blog category section By Ilja Miskov](https://dribbble.com/shots/2274792-Blog-Category-Selection)
-- [ ] Multi languages support.
+### Posts
+
+* Add, update or remove a post in the *Posts* collection.
+* Change the defaults when new posts are created in `_posts/_defaults.md`.
+
+### Footer
+
+* Exposed as a data file to give clients better access.
+* Set in the *Data* / *Footer* section.
+
+## License
+
+Free for personal and commercial use under the CCA 3.0 license. See LICENSE file for additional information and terms of use. This theme was adapted from Strata by HTML5 UP for use with [CloudCannon](http://cloudcannon.com) by [Comfusion LLC](http://comfusionllc.com).
