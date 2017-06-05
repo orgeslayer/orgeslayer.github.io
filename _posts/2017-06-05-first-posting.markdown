@@ -4,7 +4,6 @@ title: First Posting
 categories:
   - update
   - android
-date:
 ---
 
 
