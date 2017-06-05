@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My First Posting
+title: First Posting
 categories:
   - update
   - android
