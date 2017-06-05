@@ -6,9 +6,7 @@ google_analytics_key: "UA-100494940-1"
 
 # Default description in social shares for the jekyll-seo-tag gem
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  부족함을 채우는 공간입니다.
 
 # Author details for the jekyll-seo-tag gem
 author:

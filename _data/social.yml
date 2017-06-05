@@ -2,7 +2,7 @@
   link: 'https://www.linkedin.com/in/%EC%A2%85%EC%8B%9D-%EA%B9%80-b6a4a797/'
   social_icon: LinkedIn
   new_window: true
-- name: RSS
-  link: /feed.xml
-  social_icon: RSS
-  new_window: true
+#- name: RSS
+#  link: /feed.xml
+#  social_icon: RSS
+#  new_window: true
