@@ -3,7 +3,6 @@ layout: post
 title: First Posting
 categories:
   - update
-  - android
 ---
 
 
