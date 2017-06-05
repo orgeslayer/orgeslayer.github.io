@@ -1,4 +1,4 @@
-locale: "en-US"
+locale: "UTF-8"
 title: orgeslayer # Title of your site
 url: "http://orgeslayer.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
