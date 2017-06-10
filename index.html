@@ -2,6 +2,7 @@
 layout: default
 ---
 <div id="main">
+  <!-- 최신 포스트 생략 -->
   <!--<section>-->
     <!--{% for post in site.posts limit:1 %}-->
       <!--<header>-->
@@ -15,9 +16,11 @@ layout: default
     <!--{% endfor %}-->
   <!--</section>-->
 
+  <!-- 포스트 목록 숨김 처리-->
   <section>
     <div class="row">
       {% for post in site.posts %}
+        {% if post.complete %}
         <article class="{% cycle '6u', '6u$' %} 12u(small)">
           <header>
             <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
@@ -28,10 +31,11 @@ layout: default
           <footer>
             <ul class="actions">
               <li><a href="{{ post.url }}" class="button">Read More</a></li>
-              <li class="editor-link"><a href="cloudcannon:collections/{{ post.path }}" class="button"><strong>&#9998;</strong> Edit post</a></li>
+              <!--<li class="editor-link"><a href="cloudcannon:collections/{{ post.path }}" class="button"><strong>&#9998;</strong> Edit post</a></li>-->
             </ul>
           </footer>
         </article>
+        {% endif %}
       {% endfor %}
     </div>
   </section>

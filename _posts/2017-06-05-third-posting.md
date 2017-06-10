@@ -1,9 +1,11 @@
 ---
 layout: post
 title: Third Posting
-categories: update
+categories: test
 update:  2017-06-05T21:00:00Z
+author: orgeslayer
 published: false
+complete: false
 ---
 
 
