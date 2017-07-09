@@ -5,14 +5,14 @@ update:  2017-07-009T11:15:00Z
 published: true
 complete: true
 tags: java1.8, lambda, FunctionalInterface, 함수적프로그래밍
-excerpt: 자바 8부터 함수적 프로그래밍을 위하여 람다식 (Lambda Expressions) 지원하기 시작하면서, 기본의 코드 형태가 많이 달라졌다. 람다식은 ...
+excerpt: 메소드 참조(Method Reference)는 **메소드를 참조해서 매개 변수의 정보 및 리턴 타입을 알아내어 람다식에서 불필요한 매개 변수를 제거**하는 것이 목적이다.
 ---
 # 람다식 (Lambda Expression) 
 
 #### 목차
-1. [람다식 기본]()
-2. [Jav 표준API]()
-3. [메소드참조]()
+1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
+2. [Jav 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
+3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
 
 ------------------------
 
