@@ -20,7 +20,7 @@ layout: default
             <h2><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h2>
           </header>
           <section>
-            {{ page.previous.excerpt }}
+            {{ page.previous.excerpt | markdownify }}
           </section>
           <footer>
             <ul class="actions">
@@ -36,7 +36,7 @@ layout: default
             <h2><a href="{{ page.next.url }}">{{ page.next.title }}</a></h2>
           </header>
           <section>
-            {{ page.next.excerpt }}
+            {{ page.next.excerpt | markdownify }}
           </section>
           <footer>
             <ul class="actions">
