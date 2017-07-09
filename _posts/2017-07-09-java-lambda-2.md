@@ -11,7 +11,7 @@ excerpt: 자바에서 제공되는 표준 API에서 한 개의 추상 메소드�
 
 #### 목차
 1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
-2. [Jav 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
+2. [Java 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
 3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
 
 ------------------------
