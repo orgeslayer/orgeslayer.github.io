@@ -11,7 +11,7 @@ excerpt: 메소드 참조(Method Reference)는 **메소드를 참조해서 매�
 
 #### 목차
 1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
-2. [Jav 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
+2. [Java 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
 3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
 
 ------------------------
