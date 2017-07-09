@@ -5,14 +5,14 @@ update:  2017-07-009T11:15:00Z
 published: true
 complete: true
 tags: java1.8, lambda, FunctionalInterface, 함수적프로그래밍
-excerpt: 자바 8부터 함수적 프로그래밍을 위하여 람다식 (Lambda Expressions) 지원하기 시작하면서, 기본의 코드 형태가 많이 달라졌다. 람다식은 ...
+excerpt: 자바에서 제공되는 표준 API에서 한 개의 추상 메소드를 가지는 인터페이스들은 모두 람다식을 이용해서 익명 구현 객체로 표현이 가능하다.  ...
 ---
 # 람다식 (Lambda Expression) 
 
 #### 목차
-1. [람다식 기본]()
-2. [Jav 표준API]()
-3. [메소드참조]()
+1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
+2. [Jav 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
+3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
 
 ------------------------
 ## 표준 API의 함수적 인터페이스
