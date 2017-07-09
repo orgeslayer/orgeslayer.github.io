@@ -1,13 +1,20 @@
 ---
 layout: post
-title: Lambda (정리중)
-update:  2017-06-05T21:00:00Z
+title: 람다식 기본
+update:  2017-07-009T11:15:00Z
 published: true
-complete: false 
-tags: lambda, java1.8, FunctionalInterface, 함수적프로그래밍
+complete: true
+tags: java1.8, lambda, FunctionalInterface, 함수적프로그래밍
 excerpt: 자바 8부터 함수적 프로그래밍을 위하여 람다식 (Lambda Expressions) 지원하기 시작하면서, 기본의 코드 형태가 많이 달라졌다. 람다식은 ...
 ---
 # 람다식 (Lambda Expression) 
+
+#### 목차
+1. [람다식 기본]()
+2. [Jav 표준API]()
+3. [메소드참조]()
+
+------------------------
 
 ## Intro
 자바 8부터 함수적 프로그래밍을 위하여 람다식 (Lambda Expressions) 지원하기 시작하면서, 기본의 코드 형태가 많이 달라졌다. 람다식은 익명함수 (anonymous function)를 생성하기 위한 식으로 객체지향 언어보다는 **함수 지향 언어**에 가깝다. 객체지향 프로그래밍에 익숙한 개발자들은 혼란스러울 수 있지만, 다음과 같은 장점이 있다.
@@ -245,8 +252,8 @@ System.out.println("1234567 > " + formatter.apply(1234567));
 
 |인터페이스 명|추상 메소드|설명|
 |-----------|---------|---|
-|UnaryOperator&lt;T&gt;|Function&lt;T, R&gt;의 하위 인터페이스|T를 연산 후 R 리턴|
-|BinaryOperator&lt;T&gt;|BiFunction&lt;T, U, R&gt;의 하위 인터페이스|T와 U를 연산 후 R 리턴|
+|BinaryOperator&lt;T&gt;|BiFunction&lt;T, U, R&gt;의 하위 인터페이스|두 개의 Obj를 연산하여 T 리턴|
+|UnaryOperator&lt;T&gt;|Function&lt;T, R&gt;의 하위 인터페이스|하나의 Obj를 연산하여 T 리턴|
 |IntBinaryOperator|int applyAsInt(int, int)|두개의 int 를 연산|
 |IntUnaryOperator|int applyAsInt(int)|하나의 int 를 연산|
 |LongBinaryOperator|int applyAsLong(long, long)|두개의 long을 연산|
@@ -294,3 +301,146 @@ System.out.println("90점 이상 : " + count);
 ```
 
 ------------------------------------
+### andThen() 과 compose() 디폴트 메소드
+
+java.util.function 패키지의 함수적 인터페이스는 하나 이상의 디폴트 메소드를 가지고 있다.
+Consumer, Function, Operator 종류의 함수적 인터페이스는 andThen()과 compose() 디폴트 메소드를 가지고 있다. andThen() 과 compose() 메소드는 두 개의 함수적 인터페이스를 순차적으로 연결하고, 첫 번째 처리 결과를 두 번째 매개값으로 제공해서 최종 결과값을 얻을 때 사용합니다. 두 디폴트 메소드의 차이는 어떤 함수적 인터페이스부터 먼저 처리되느냐에 따라 다르다.
+
+```java
+Interface interfaceAB = interfaceA.andThen(interfaceB);
+Result result = interfaceAB.method();
+```
+
+interfaceAB 의 method()를 호출하면 우선 **interfaceA부터 처리하고 결과를 interfaceB의 매개값으로 사용된다.** interfaceB는 제공받은 매개값을 가지고 처리한 후 최종 결과를 리턴한다.
+
+```java
+Interface interfaceAB = interfaceA.compose(interfaceB);
+Result result = interfaceAB.method();
+```
+
+interfaceAB 의 method()를 호출하면 우선 **interfaceB부터 처리하고 결과를 interfaceA에 매개값으로 사용된다.** interfaceA는 제공받은 매개값을 가지고 처리한 후 최종 결과를 리턴한다.
+
+아래는 andThen(), compose() 디폴트 메소드를 제공하는 java.util.function 패키지의 함수적 인터페이스 목록이다.
+
+**Consumer** 
+|함수적 인터페이스|andThen()|compose()|
+|--------------|:-------:|:-------:|
+|Consumer&lt;T&gt; | O |  |
+|BiConsumer&lt;T, U&gt; | O |  |
+|DoubleConsumer | O |  |
+|IntConsumer | O |  |
+|LongConsumer | O |  |
+
+**Function** 
+|함수적 인터페이스|andThen()|compose()|
+|--------------|:-------:|:-------:|
+|Function&lt;T, R&gt; | O |  |
+|BiFunction&lt;T, U, R&gt; | O | O |
+
+**Operator** 
+|함수적 인터페이스|andThen()|compose()|
+|--------------|:-------:|:-------:|
+|BinaryOperator&lt;T&gt; | O |  |
+|DoubleUnaryOperator | O | O |
+|IntUnaryOperator | O | O |
+|LongUnaryOperator | O | O |
+
+
+------------------------------
+### and(), or(), negate() 디폴트 메소드와 isEqual() 정적 메소드
+
+**Predicate** 종류의 함수적 인터페이스는 and(), or(), negate() 디폴트 메소드를 가지고 있다. 이 메소드들은 각각 논리연산자인 &&, ||, ! 과 대응된다. **&&, || 연산의 경우 조건을 모두 체크하지 않기도 하는데 이는 and(), or() 디폴트 메소드에서도 동일하게 적용**된다.  아래 예제는 2의 배수, 3의 배수를 조사하는 Predicate와 두 Predicate를 논리연산한 새로운 Predicate 를 생성한다.
+
+``` java
+IntPredicate predicateA = (a) -> {
+	System.out.println("[predicateA 호출됨]");
+	return a % 2 == 0;
+};
+IntPredicate predicateB = (b) -> {
+	System.out.println("[predicateB 호출됨]");
+	return b % 3 == 0;
+};
+
+boolean result;
+IntPredicate predicateAB = predicateA.and(predicateB);
+result = predicateAB.test(9);
+System.out.println("9는 2와 3의 배수입니까? " + result);
+
+predicateAB = predicateA.or(predicateB);
+result = predicateAB.test(9);
+System.out.println("9는 2또는 3의 배수입니까? " + result);
+
+predicateAB = predicateA.negate();
+result = predicateAB.test(9);
+System.out.println("9는 홀수입니까? " + result);
+```
+
+Predicate&lt;T&gt; 함수적 인터페이스는 isEqual() 정적 메소드를 별도로 제공한다. isEqual() 메소드는 test() 매개값인 sourceObject 와 isEqual() 의 매개값인 targetObject 를 java.util.Objects 클래스의 equals() 의 매개값으로 제공하고, Objects, equals(source, targetObject) 의 리턴값을 얻어 새로운 Predicate&lt;T&gt; 를 생성한다. 
+
+```java
+Predicate<Object> predicate = Predicate.isEqual(targetObject);
+boolean result = predicate.test(sourceObject);
+```
+
+---------------------------------
+### minBy(), maxBy() 정적 메소드
+BinaryOperator&lt;T&gt; 함수적 인터페이스는 minBy(), maxBy() 정적 메소드를 제공한다. 두 메소드는 **매개값으로 제공되는 Comparator 를 이용해서 최대 T와 최소 T를 얻는 BinaryOperator&lt;T&gt;를 리턴**한다.
+
+Comparator&lt;T&gt;는 o1과 o2를 비교하여 o1작으면 음수를, o1과 o2가 동일하면 0, o1이 크면 양수를 리턴하는 compare() 메소드가 선언된 함수적 인터페이스다.
+```java
+@FunctionalInterface
+public interface Comparator<T> {
+    public int compare(T o1, T o2);
+}
+```
+
+-------------------------------
+
+### 메소드 참조
+메소드 참조(Method Reference)는 **메소드를 참조해서 매개 변수의 정보 및 리턴 타입을 알아내어 람다식에서 불필요한 매개 변수를 제거**하는 것이 목적이다.  람다식은 종종 기존 메소드를 단순히 호출해주는 경우가 많다. 예를 들어 두 개의 값을 받아 큰 수를 리턴하는 람다식의 경우 아래와 같을 수 있다.
+```java
+IntBinaryOperator max = (left, right) -> Math.max(left, right);
+```
+람다식은 단순히 두 개의 인자값을 Math.max() 메소드의 매개값으로 전달하는 역할만 하기 때문에 불필요한 입력이 있으며, 이 경우 다음과 같이 메소드참조를 이용하면 좀 더 코드를 간결하게 바꿀 수 있다.
+```java
+IntBinaryOperator max = Math::max;
+```
+메소드 참조도 람다식과 마찬가지로 인터페이스의 익명 구현 객체로 생성되므로, 타겟 타입인 인터페이스 추상 메소드가 어떤 매개 변수를 가지고, 리턴 타입이 무엇인가에 따라 달라진다. 메소드 참조는 ***정적메소드 참조, 인스턴스 메소드를 참조, 생성자 참조가 가능***하다.
+```java
+클래스::메소드;
+참조객체::메소드;
+```
+
+메소드는 람다식 외부의 클래스 멤버일 수도 있고, 람다식에서 제공하는 매개 변수의 멤버일 수도 있다. 예를들어, 아래와 같이 a 매개변수의 메소드를 호출해서 b 매개변수를 값으로 사용하는 경우도 있다.
+```java
+(a, b) -> { a.instanceMethod(b); }
+```
+이것을 메소드 참조로 표현하면 **a의 클래스 이름 뒤에 :: 기호를 붙이고 메소드 이름을 기술하면 된다.** 정적 메소드 참조와 동일하게 작성하지만, 실제 동작은 a의 인스턴스 메소드가 참조되기 때문에 전혀 다른 코드가 실행된다.
+```java
+ClassA::instanceMethod;
+```
+
+위에서 언급한것 처럼 메소드 참조는 생성자 역시 참조가 가능하다. 단순히 객체를 생성하고 리턴하도록 구성된 람다식은 생성자 참조로 대치가 가능하다. 아래 람다식은 단순히 객체 생성 후 리턴만 한다. 
+```java
+public class A {
+	int a;
+	int b;
+	
+	public A(int a, int b) {
+		this.a = a;
+		this.b = b;
+	}
+}
+
+BiFunction<Integer, Integer, A> generator = (a, b) -> new A(a, b);
+```
+
+이 경우, 생성자 참조를 사용하면 아래와 같이 수정이 가능하다.
+```java
+BiFunction<Integer, Integer, A> generator = A::new;
+```
+생성자 참조는 클래스 이름 뒤에 :: 기호를 붙이고 new 연산자를 기술하면된다. 생성자가 여러개 오버로딩 되어있을 경우, **컴파일러는 함수적 인터페이스의 추상 메소드와 동일한 매개 변수 타입과 개수를 가지고 있는 생성자를 찾아서 실행**하며, 만약 해당 생성자가 없을 경우 컴파일 오류가 발생된다.
+
+-------------------------------
+참조
+[palpit's log-b](http://palpit.tistory.com/670)
