@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 람다식 - (3)
+author: orgeslayer
 update:  2017-07-009T11:15:00Z
 published: true
 complete: true

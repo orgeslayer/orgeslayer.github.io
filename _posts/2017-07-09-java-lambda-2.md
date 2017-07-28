@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 람다식 - (2)
+author: orgeslayer
 update:  2017-07-009T11:15:00Z
 published: true
 complete: true
@@ -174,6 +175,7 @@ interfaceAB 의 method()를 호출하면 우선 **interfaceB부터 처리하고 
 아래는 andThen(), compose() 디폴트 메소드를 제공하는 java.util.function 패키지의 함수적 인터페이스 목록이다.
 
 **Consumer** 
+
 |함수적 인터페이스|andThen()|compose()|
 |--------------|:-------:|:-------:|
 |Consumer&lt;T&gt; | O |  |
@@ -183,12 +185,14 @@ interfaceAB 의 method()를 호출하면 우선 **interfaceB부터 처리하고 
 |LongConsumer | O |  |
 
 **Function** 
+
 |함수적 인터페이스|andThen()|compose()|
 |--------------|:-------:|:-------:|
 |Function&lt;T, R&gt; | O |  |
 |BiFunction&lt;T, U, R&gt; | O | O |
 
 **Operator** 
+
 |함수적 인터페이스|andThen()|compose()|
 |--------------|:-------:|:-------:|
 |BinaryOperator&lt;T&gt; | O |  |
@@ -200,7 +204,10 @@ interfaceAB 의 method()를 호출하면 우선 **interfaceB부터 처리하고 
 ------------------------------
 ### and(), or(), negate() 디폴트 메소드와 isEqual() 정적 메소드
 
-**Predicate** 종류의 함수적 인터페이스는 and(), or(), negate() 디폴트 메소드를 가지고 있다. 이 메소드들은 각각 논리연산자인 &&, ||, ! 과 대응된다. **&&, || 연산의 경우 조건을 모두 체크하지 않기도 하는데 이는 and(), or() 디폴트 메소드에서도 동일하게 적용**된다.  아래 예제는 2의 배수, 3의 배수를 조사하는 Predicate와 두 Predicate를 논리연산한 새로운 Predicate 를 생성한다.
+**Predicate** 종류의 함수적 인터페이스는 and(), or(), negate() 디폴트 메소드를 가지고 있다. 
+이 메소드들은 각각 논리연산자인 &&, ||, ! 과 대응된다. 
+**&&, || 연산의 경우 조건을 모두 체크하지 않기도 하는데 이는 and(), or() 디폴트 메소드에서도 동일하게 적용**된다.  
+아래 예제는 2의 배수, 3의 배수를 조사하는 Predicate와 두 Predicate를 논리연산한 새로운 Predicate 를 생성한다.
 
 ``` java
 IntPredicate predicateA = (a) -> {
