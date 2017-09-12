@@ -11,9 +11,9 @@ excerpt: 자바 8부터 함수적 프로그래밍을 위하여 람다식 (Lambda
 # 람다식 (Lambda Expression) 
 
 #### 목차
-1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
-2. [Java 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
-3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
+1. [람다식 기본](/2017/07/09/java-lambda-1/)
+2. [Java 표준API](/2017/07/09/java-lambda-2/)
+3. [메소드참조](/2017/07/09/java-lambda-3/)
 
 ------------------------
 

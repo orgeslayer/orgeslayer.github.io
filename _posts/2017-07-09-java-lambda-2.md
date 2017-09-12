@@ -11,9 +11,9 @@ excerpt: 자바에서 제공되는 표준 API에서 한 개의 추상 메소드�
 # 람다식 (Lambda Expression) 
 
 #### 목차
-1. [람다식 기본](https://orgeslayer.github.io/2017/07/09/java-lambda-1/)
-2. [Java 표준API](https://orgeslayer.github.io/2017/07/09/java-lambda-2/)
-3. [메소드참조](https://orgeslayer.github.io/2017/07/09/java-lambda-3/)
+1. [람다식 기본](/2017/07/09/java-lambda-1/)
+2. [Java 표준API](/2017/07/09/java-lambda-2/)
+3. [메소드참조](/2017/07/09/java-lambda-3/)
 
 ------------------------
 ## 표준 API의 함수적 인터페이스
